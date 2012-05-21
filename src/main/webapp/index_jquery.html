@@ -1,0 +1,22 @@
+<html>
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#button_delayed_text").click(function () {
+                $.ajax({
+                    type:"GET",
+                    url:"http://localhost:8080/delayed_text"
+                }).done(function (msg) {
+                            $("#container").html(msg);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+<input type="button" id="button_delayed_text" value="Show delayed text"/>
+<div id="container" style="width: 300px; height: 100px; border: black 1px dotted;"></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+    <script type="text/javascript">
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("container").innerHTML = xmlhttp.responseText;
+            }
+        }
+
+        function ajaxCallDelayedText() {
+            xmlhttp.open("GET", "http://localhost:8080/delayed_text", true);
+            xmlhttp.send();
+        }
+
+        function ajaxCallDelayedDiv() {
+            xmlhttp.open("GET", "http://localhost:8080/delayed_div", true);
+            xmlhttp.send();
+        }
+
+    </script>
+</head>
+
+<body>
+
+<input type="button" id="button_delayed_text" value="Show delayed text" onclick="ajaxCallDelayedText();"/>
+<input type="button" id="button_delayed_div" value="Show delayed div" onclick="ajaxCallDelayedDiv();"/>
+
+<div id="container" style="width: 300px; height: 100px; border: black 1px dotted;"></div>
+</body>
+</html>

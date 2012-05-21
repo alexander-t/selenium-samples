@@ -1,0 +1,28 @@
+<html>
+<head>
+    <script type="text/javascript">
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var response = JSON.parse(xmlhttp.responseText);
+                document.getElementById("remark").innerHTML = response.valid ? "": "VALIDATION ERROR!";
+            }
+        }
+
+        function validate() {
+            xmlhttp.open("GET", "http://localhost:8080/validate?value=" + document.getElementById("field_to_validate").value, true);
+            xmlhttp.send();
+        }
+
+    </script>
+</head>
+
+<body>
+
+<input type="text" id="field_to_validate"/>
+<div id="remark" style="color: red"></div>
+<input type="button" id="validate_button" value="Validate" onclick="validate();"/>
+
+</body>
+</html>
